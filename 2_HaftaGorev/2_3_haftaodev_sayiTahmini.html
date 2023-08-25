@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev-2</title>
+    <script>
+        window.onload = function SayiUret() {
+            var sabit = Math.floor(Math.random()*(100-1)) + parseInt(1) ;
+            document.getElementById('random').value = sabit;
+        }
+        function SayiTahmin() {  
+            var sabit =  document.getElementById('random').value;
+            var sayac = document.getElementById('counter').value;
+            var tahmin = document.getElementById('counter').value;
+
+            sayac++;
+            document.getElementById('counter').value = sayac;
+            document.getElementById('bilgi').innerText =  `${sayac + 1}. tahmini girin: `;
+            
+            tahmin = document.getElementById('sayi').value;
+            if (sayac<=6){
+                if (tahmin < sabit){
+                document.getElementById('yonlendirme').innerText = "Daha büyük bir sayı girin";
+                }
+                else if (tahmin > sabit){
+                    document.getElementById('yonlendirme').innerText = "Daha küçük bir sayı girin";
+                }
+                if (sabit == tahmin){
+                document.getElementById('sonuc').innerText = `Sayı ${sayac} denemede bulundu.`;
+                } 
+            }                                              
+            else{
+                document.getElementById('sonuc').innerText = "Deneme hakkınız kalmadı. Kaybettiniz.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <label for="sayi" id="bilgi">1. tahmini girin:</label>
+    <input type="number" id="sayi"> <br>
+    <input type="submit" value="Tahmin Yap" onclick="SayiTahmin()"><br>
+
+    <hr>
+    <label id="yonlendirme"></label><br>
+    <label id="sonuc"></label><br>
+    <input type="text" id="random" hidden>
+    <input type="text" id="counter" value="0" hidden >
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev-2</title>
+    <script>
+        function Uret() { 
+            var min = document.getElementById('min').value;
+            var max = document.getElementById('max').value;
+
+            if (min<max){
+                document.getElementById('sonuc').innerText = Math.floor(Math.random()*(max-min)) + parseInt(min) ;
+            }
+            else{
+                alert("Minimum değer, maksimum değerden küçük olmalıdır!")
+            }
+           
+        }
+        function SecMin() {
+            document.getElementById('minSayi').value = document.getElementById('min').value;
+        }
+        function SecMax() {
+            document.getElementById('maxSayi').value = document.getElementById('max').value;
+        }
+    </script>
+</head>
+<body>
+    <label for="min">Minimum Değer: </label><br>
+    <input type="range" id="min" min="1" max="100" value="50">
+    <input type="submit" value="Seç" onclick="SecMin()">
+    <input type="text" id="minSayi" disabled readonly><br>
+
+    <label for="max">Maksimum Değer: </label> <br>
+    <input type="range" id="max" min="1" max="100" value="50">
+    <input type="submit" value="Seç" onclick="SecMax()">
+    <input type="text" id="maxSayi" disabled readonly><br><br>
+    <input type="submit" value="Uret" onclick="Uret()">
+    <hr>
+    <label>Rastgele Sayı : </label><label id="sonuc"></label>
+</body>
+</html>
+
+
+
