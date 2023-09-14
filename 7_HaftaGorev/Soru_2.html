@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DTC</title>
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+    <style>
+      .blue {
+        color: dodgerblue;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const useState = React.useState;
+      function Page() {
+        const [kısaKenar, setKısaKenar] = useState(0);
+        const [uzunKenar, setUzunKenar] = useState(0);
+        const [alan, setAlan] = useState(0);
+        const [cevre, setCevre] = useState(0);
+        const handleClick = () => {
+        const kısaKenarNumber = parseInt(kısaKenar);
+        const uzunKenarNumber = parseInt(uzunKenar);
+        
+        if (isNaN(kısaKenarNumber) || isNaN(uzunKenarNumber)) {
+        alert("Lütfen geçerli sayıları girin.");
+        return;
+        }
+        const alanValue = kısaKenarNumber * uzunKenarNumber;
+        const cevreValue = kısaKenarNumber * 2 + uzunKenarNumber * 2;
+        setAlan(alanValue);
+        setCevre(cevreValue);
+        };
+
+    
+        return (
+          <div>
+            <label htmlFor="kısaKenar">Kısa Kenar girin</label> <br />
+            <input
+              type="number"
+              value={kısaKenar}
+              onChange={(e) => setKısaKenar(e.target.value)}
+            />
+            <br />
+            <label htmlFor="uzunKenar">Uzun Kenar Girin..</label> <br />
+            <input
+              type="number"
+              value={uzunKenar}
+              onChange={(e) => setUzunKenar(e.target.value)}
+            />
+            <br />
+            <br />
+            <input type="button" value="Hesapla" onClick={handleClick} />
+            <br />
+            <br />
+            <div>
+            <label htmlFor="alan">Alan</label> <br />
+            <input
+              type="number"
+              value={alan}
+              readOnly
+            />
+            <br /><br />
+            <label htmlFor="cevre">Çevre</label> <br />
+            <input
+              type="number"
+              value={cevre}
+              readOnly
+            />
+            </div>
+          </div>
+        );
+      }
+    
+      const root = document.getElementById("root");
+      const container = ReactDOM.createRoot(root);
+      container.render(<Page />);
+    </script>
+    
+  </body>
+</html>
